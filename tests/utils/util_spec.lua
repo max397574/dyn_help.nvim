@@ -7,7 +7,7 @@
 describe("Util tests:", function()
     it("Get an option value", function()
         vim.cmd([[set relativenumber]])
-        if vim.fn.has("0.7") then
+        if vim.fn.has("nvim-0.7.0") then
             assert.equals(
                 require("dynamic_help.utils").get_option_value("relativenumber"),
                 "true"
@@ -16,7 +16,7 @@ describe("Util tests:", function()
     end)
     it("Get an option default value", function()
         vim.cmd([[set relativenumber]])
-        if vim.fn.has("0.7") then
+        if vim.fn.has("nvim-0.7.0") then
             assert.equals(
                 require("dynamic_help.utils").get_default_option_value(
                     "relativenumber"
