@@ -8,9 +8,13 @@ set rtp+=~/.local/share/nvim/site/pack/packer/start/plenary.nvim
 runtime! plugin/plenary.vim
 
 lua <<EOF
-function P(...)
-    local objects = vim.tbl_map(vim.inspect, {...})
-    print(unpack(objects))
+P = function(...)
+    if type(...) == "userdata" then
+        print("Userdata:")
+        print(vim.inspect(getmetatable(...)))
+    else
+        print(vim.inspect(...))
+    end
     return ...
 end
 EOF
