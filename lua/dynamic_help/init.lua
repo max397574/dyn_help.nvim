@@ -1,17 +1,6 @@
 local dyn_help = {}
 local Path = require("plenary.path")
 
---- Get the value of the option under the cursor
---- This can be used as statusline component
-dyn_help.option_value = function(option)
-    local ok, res = pcall(vim.api.nvim_get_option_value, option({}))
-    if ok then
-        return tostring(res)
-    else
-        return ""
-    end
-end
-
 dyn_help.help_tags = function(opts)
     RELOAD("dynamic_help")
     -- code from https://github.com/nvim-telescope/telescope.nvim/blob/1d1da664eb6505c318d405eea3d633c451edc2d8/lua/telescope/builtin/internal.lua#L1
