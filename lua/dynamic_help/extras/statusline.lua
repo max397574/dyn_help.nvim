@@ -7,6 +7,8 @@ for _, tag in ipairs(help_tags) do
     table.insert(tag_names, tag.name)
 end
 
+--- Checks if there is a helpfile available for word under cursor
+---@return string symbol Empty string if not available
 statusline.available = function()
     local tag_name = vim.fn.expand("<cword>")
     if tag_name == "" then
@@ -25,6 +27,8 @@ statusline.available = function()
     return ""
 end
 
+--- Gets the value of option under the cursor
+---@return string value Empty string if no valid option
 statusline.value = function()
     return utils.get_option_value(vim.fn.expand("<cword>"))
 end

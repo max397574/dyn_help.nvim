@@ -31,6 +31,9 @@ function utils.get_default_option_value(option)
     end
 end
 
+--- Gets available help tags
+---@param opts table options
+---@return table help_tags
 utils.help_tags = function(opts)
     -- code from https://github.com/nvim-telescope/telescope.nvim/blob/
     -- 1d1da664eb6505c318d405eea3d633c451edc2d8/lua/telescope/builtin/internal.lua#L1
@@ -108,6 +111,9 @@ utils.help_tags = function(opts)
     return tags
 end
 
+--- Gets helpfile contents
+---@param tag_name string The help tag
+---@return table contents Table with lines
 function utils.get_help_tag_lines(tag_name)
     local help_file
     for _, tag in pairs(utils.help_tags()) do
