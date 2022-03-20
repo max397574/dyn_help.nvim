@@ -32,7 +32,8 @@ function utils.get_default_option_value(option)
 end
 
 utils.help_tags = function(opts)
-    -- code from https://github.com/nvim-telescope/telescope.nvim/blob/1d1da664eb6505c318d405eea3d633c451edc2d8/lua/telescope/builtin/internal.lua#L1
+    -- code from https://github.com/nvim-telescope/telescope.nvim/blob/
+    -- 1d1da664eb6505c318d405eea3d633c451edc2d8/lua/telescope/builtin/internal.lua#L1
     opts = opts or {}
     opts.lang = vim.o.helplang
     opts.fallback = true
@@ -119,12 +120,13 @@ function utils.get_help_tag_lines(tag_name)
             break
         end
     end
+    if not help_file then
+        return {}
+    end
     local lines = vim.fn.readfile(help_file.filename)
     local buf = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-    local width = vim.api.nvim_win_get_width(0)
-    local height = vim.api.nvim_win_get_height(0)
     local win = vim.api.nvim_open_win(buf, true, {
         relative = "win",
         win = 0,
@@ -144,7 +146,6 @@ function utils.get_help_tag_lines(tag_name)
     vim.cmd("norm! zz")
     local start_line = vim.api.nvim_win_get_cursor(win)[1]
     vim.cmd("q")
-    local end_line
     local tag_lines = {}
     for i, line in ipairs(lines) do
         if i >= start_line then
