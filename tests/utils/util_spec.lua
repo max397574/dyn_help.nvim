@@ -7,10 +7,12 @@
 describe("Util tests:", function()
     it("Get an option value", function()
         vim.cmd([[set relativenumber]])
-        assert.equals(
-            require("dynamic_help.utils").get_option_value("relativenumber"),
-            "true"
-        )
+        if vim.fn.has("0.7") then
+            assert.equals(
+                require("dynamic_help.utils").get_option_value("relativenumber"),
+                "true"
+            )
+        end
     end)
     it("Get an invalid option value", function()
         assert.equals(
