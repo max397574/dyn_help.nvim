@@ -2,7 +2,7 @@ local dyn_help = {}
 local utils = require("dynamic_help.utils")
 
 function dyn_help.float_help(tag_name)
-    local tag_lines = dyn_help.get_help_tag_lines(tag_name)
+    local tag_lines = utils.get_help_tag_lines(tag_name)
     local buf = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
     vim.api.nvim_buf_set_keymap(
