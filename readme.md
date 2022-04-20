@@ -47,18 +47,25 @@ vim.keymap.set(
 )
 ```
 
+![float-help](https://user-images.githubusercontent.com/81827001/164296691-0e5cef08-19d0-4792-948b-381c8cbc90ae.png)
+
 ## Statusline
+
 ### Option Value
 You can use this function to get the value of an option under the cursor:
 ```lua
 return require("dynamic_help.extras.statusline").value()
 ```
 
+![option-value](https://user-images.githubusercontent.com/81827001/164296172-a12dc960-9ebd-4348-b87f-db7e579f6e19.png)
+
 ### Help Available
 You can use this function to display a symbol if help is available:
 ```lua
 return require("dynamic_help.extras.statusline").available()
 ```
+
+![help-available](https://user-images.githubusercontent.com/81827001/164296459-e295cf05-5272-4070-9da2-844d08a42170.png)
 
 # Limitations
 Not every help in a floating window will be perfect.
